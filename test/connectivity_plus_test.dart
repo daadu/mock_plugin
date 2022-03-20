@@ -1,21 +1,11 @@
 import 'package:connectivity_plus/connectivity_plus.dart';
-import 'package:flutter/services.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mock_plugin/mock_plugin.dart';
 
-// E().toString should contain class name
-Matcher _throwsWithPlatformException<E extends Exception>() =>
-    throwsA(predicate(
-        (e) => e is PlatformException && e.message!.contains(E.toString()),
-        E.toString()));
-
-final throwsNoStubMockPluginError =
-    _throwsWithPlatformException<NoStubMockPluginError>();
-
 void main() {
-  group("connectivity_plus", () {
-    late MockedPlugin connectivityPlugin;
+  late MockedPlugin connectivityPlugin;
 
+  group("connectivity_plus", () {
     setUp(() {
       connectivityPlugin =
           setUpMockPlugin("dev.fluttercommunity.plus/connectivity");

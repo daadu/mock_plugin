@@ -4,20 +4,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_test/flutter_test.dart';
 
+part 'src/error.dart';
+part 'src/verifier.dart';
+
 typedef _Result = Future<Object?>?;
 typedef _ResultCallback = _Result Function();
-
-class _CallCountVerifier {
-  final int Function() _getCallCount;
-
-  _CallCountVerifier._(this._getCallCount);
-
-  void calledNever() => expect(_getCallCount.call(), isZero);
-
-  void calledOnce() => expect(_getCallCount.call(), equals(1));
-
-  void called(dynamic count) => expect(_getCallCount.call(), count);
-}
 
 @visibleForTesting
 class StubMethod {
@@ -44,21 +35,6 @@ class StubMethod {
   }
 }
 
-@visibleForTesting
-class NoStubMockPluginError implements Exception {
-  final MockedPlugin plugin;
-  final MethodCall call;
-
-  const NoStubMockPluginError(this.plugin, this.call);
-
-  @override
-  String toString() {
-    return "\n\tNoStubMockPluginError: no stub for $call found for $plugin."
-        "\n\tcalls: ${plugin._calls}"
-        "\n\tstubs: ${plugin._stubs}"
-        "\n";
-  }
-}
 
 @visibleForTesting
 class MockedPlugin {
@@ -85,8 +61,8 @@ class MockedPlugin {
   _CallCountVerifier verify(dynamic method, [dynamic arguments = anything]) =>
       _CallCountVerifier._(() => _calls
           .where((call) =>
-              _matchesMethod(method, call.method) &&
-              _matchesArgs(arguments, call.arguments))
+      _matchesMethod(method, call.method) &&
+          _matchesArgs(arguments, call.arguments))
           .length);
 
   void reset() {
@@ -135,9 +111,9 @@ class MockedPlugin {
 
 @visibleForTesting
 MockedPlugin setUpMockPlugin(
-  String methodChannelName, {
-  bool shouldTearDown = true,
-}) {
+    String methodChannelName, {
+      bool shouldTearDown = true,
+    }) {
   TestWidgetsFlutterBinding.ensureInitialized();
 
   // setMockMethodCallHandler for the plugin specified
@@ -151,3 +127,4 @@ MockedPlugin setUpMockPlugin(
 
   return mockPlugin;
 }
+
