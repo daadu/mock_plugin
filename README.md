@@ -26,7 +26,6 @@ TODO
 
 - Complete README
 - API docs
-- CI - analyze, test, coverage
 - Mock more plugins in tests
 - Mock EventChannel of plugin
 
