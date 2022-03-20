@@ -5,6 +5,7 @@ import 'package:flutter/services.dart';
 import 'package:flutter_test/flutter_test.dart';
 
 part 'src/error.dart';
+
 part 'src/verifier.dart';
 
 typedef _Result = Future<Object?>?;
@@ -69,17 +70,14 @@ class MockedPlugin {
     _stubs.clear();
   }
 
-  bool _matchesMethod(dynamic method, String calledMethod) {
-    if (method is Matcher) return method.matches(calledMethod, {});
+  bool _matchesMethod(dynamic method, String calledMethod) => method is Matcher
+      ? method.matches(calledMethod, {})
+      : method == calledMethod;
 
-    return method == calledMethod;
-  }
-
-  bool _matchesArgs(dynamic arguments, dynamic calledArgs) {
-    if (arguments is Matcher) return arguments.matches(calledArgs, {});
-
-    return arguments == calledArgs;
-  }
+  bool _matchesArgs(dynamic arguments, dynamic calledArgs) =>
+      arguments is Matcher
+          ? arguments.matches(calledArgs, {})
+          : arguments == calledArgs;
 
   _Result _methodHandler(MethodCall call) async {
     // match stub to call - call if found or error
