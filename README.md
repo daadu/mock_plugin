@@ -2,7 +2,7 @@
 
 <p>
 <a href="https://pub.dev/packages/mock_plugin"><img src="https://img.shields.io/pub/v/mock_plugin?logo=dart" alt="pub.dev"></a>
-<a href="https://github.com/daadu/mock_plugin/actions/workflows/ci.yml"><img src="https://github.com/daadu/mock_plugin/actions/workflows/ci.yml/badge.svg" alt="ci"></a>
+<a href="https://github.com/daadu/mock_plugin/actions/workflows/ci.yaml"><img src="https://github.com/daadu/mock_plugin/actions/workflows/ci.yaml/badge.svg" alt="ci"></a>
 <!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
 <a href="#contributors-"><img src="https://img.shields.io/badge/all_contributors-1-orange.svg" alt="All Contributors" /></a>
 <!-- ALL-CONTRIBUTORS-BADGE:END -->
