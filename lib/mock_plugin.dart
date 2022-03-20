@@ -70,16 +70,14 @@ class MockedPlugin {
   }
 
   bool _matchesMethod(dynamic method, String calledMethod) {
-    if (method is Matcher) {
-      return method.matches(calledMethod, {});
-    }
+    if (method is Matcher) return method.matches(calledMethod, {});
+
     return method == calledMethod;
   }
 
   bool _matchesArgs(dynamic arguments, dynamic calledArgs) {
-    if (arguments is Matcher) {
-      return arguments.matches(calledArgs, {});
-    }
+    if (arguments is Matcher) return arguments.matches(calledArgs, {});
+
     return arguments == calledArgs;
   }
 
