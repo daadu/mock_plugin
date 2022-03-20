@@ -61,8 +61,7 @@ class MockedPlugin {
   _CallCountVerifier verify(dynamic method, [dynamic arguments = anything]) =>
       _CallCountVerifier._(() => _calls
           .where((call) =>
-              _matchesMethod(method, call.method) &&
-              _matchesArgs(arguments, call.arguments))
+              _match(call.method, method) && _match(call.arguments, arguments))
           .length);
 
   void reset() {
@@ -70,21 +69,15 @@ class MockedPlugin {
     _stubs.clear();
   }
 
-  bool _matchesMethod(dynamic method, String calledMethod) => method is Matcher
-      ? method.matches(calledMethod, {})
-      : method == calledMethod;
-
-  bool _matchesArgs(dynamic arguments, dynamic calledArgs) =>
-      arguments is Matcher
-          ? arguments.matches(calledArgs, {})
-          : arguments == calledArgs;
+  bool _match(dynamic actual, dynamic matcher) =>
+      matcher is Matcher ? matcher.matches(actual, {}) : actual == matcher;
 
   _Result _methodHandler(MethodCall call) async {
     // match stub to call - call if found or error
     for (final stub in _stubs) {
-      // check if  method and arg matches
-      if (_matchesMethod(stub._method, call.method) &&
-          _matchesArgs(stub._arguments, call.arguments)) {
+      // check if method and arg matches
+      if (_match(call.method, stub._method) &&
+          _match(call.arguments, stub._arguments)) {
         // add to _calls
         _calls.add(call);
 
