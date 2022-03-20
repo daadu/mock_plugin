@@ -35,7 +35,6 @@ class StubMethod {
   }
 }
 
-
 @visibleForTesting
 class MockedPlugin {
   final MethodChannel _methodChannel;
@@ -61,8 +60,8 @@ class MockedPlugin {
   _CallCountVerifier verify(dynamic method, [dynamic arguments = anything]) =>
       _CallCountVerifier._(() => _calls
           .where((call) =>
-      _matchesMethod(method, call.method) &&
-          _matchesArgs(arguments, call.arguments))
+              _matchesMethod(method, call.method) &&
+              _matchesArgs(arguments, call.arguments))
           .length);
 
   void reset() {
@@ -111,9 +110,9 @@ class MockedPlugin {
 
 @visibleForTesting
 MockedPlugin setUpMockPlugin(
-    String methodChannelName, {
-      bool shouldTearDown = true,
-    }) {
+  String methodChannelName, {
+  bool shouldTearDown = true,
+}) {
   TestWidgetsFlutterBinding.ensureInitialized();
 
   // setMockMethodCallHandler for the plugin specified
@@ -127,4 +126,3 @@ MockedPlugin setUpMockPlugin(
 
   return mockPlugin;
 }
-

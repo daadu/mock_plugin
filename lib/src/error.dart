@@ -3,11 +3,11 @@ part of '../mock_plugin.dart';
 // E().toString should contain class name
 Matcher _throwsWithPlatformException<E extends Exception>() =>
     throwsA(predicate(
-            (e) => e is PlatformException && e.message!.contains(E.toString()),
+        (e) => e is PlatformException && e.message!.contains(E.toString()),
         E.toString()));
 
 final throwsNoStubMockPluginError =
-_throwsWithPlatformException<NoStubMockPluginError>();
+    _throwsWithPlatformException<NoStubMockPluginError>();
 
 @visibleForTesting
 class NoStubMockPluginError implements Exception {
