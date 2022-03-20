@@ -1,39 +1,69 @@
-<!-- 
-This README describes the package. If you publish this package to pub.dev,
-this README's contents appear on the landing page for your package.
+# mock_plugin
 
-For information about how to write a good package README, see the guide for
-[writing package pages](https://dart.dev/guides/libraries/writing-package-pages). 
-
-For general information about developing packages, see the Dart guide for
-[creating packages](https://dart.dev/guides/libraries/create-library-packages)
-and the Flutter guide for
-[developing packages and plugins](https://flutter.dev/developing-packages). 
--->
-
-TODO: Put a short description of the package here that helps potential users
-know whether this package might be useful for them.
-
-## Features
-
-TODO: List what your package can do. Maybe include images, gifs, or videos.
+<p>
+<a href="https://pub.dev/packages/mock_plugin"><img src="https://img.shields.io/pub/v/mock_plugin?logo=dart" alt="pub.dev"></a>
+<a href="https://github.com/daadu/mock_plugin/actions/workflows/ci.yml"><img src="https://github.com/daadu/mock_plugin/actions/workflows/ci.yml/badge.svg" alt="ci"></a>
+<!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
+<a href="#contributors-"><img src="https://img.shields.io/badge/all_contributors-1-orange.svg" alt="All Contributors" /></a>
+<!-- ALL-CONTRIBUTORS-BADGE:END -->
+<a href="https://pub.dev/packages/mock_plugin/score"><img src="https://badges.bar/mock_plugin/pub%20points" alt="pub points"></a>
+<a href="https://pub.dev/packages/mock_plugin/score"><img src="https://badges.bar/mock_plugin/popularity" alt="popularity"></a>
+<a href="https://pub.dev/packages/mock_plugin/score"><img src="https://badges.bar/mock_plugin/likes" alt="likes"></a>
+<a href="https://github.com/daadu/mock_plugin/issues"><img src="https://img.shields.io/github/issues/daadu/mock_plugin?logo=github" alt="GitHub issues"></a>
+<a href="https://github.com/daadu/mock_plugin/stargazers"><img src="https://img.shields.io/github/stars/daadu/mock_plugin?logo=github" alt="GitHub stars"></a>
+<a href="https://github.com/daadu/mock_plugin/network"><img src="https://img.shields.io/github/forks/daadu/mock_plugin?logo=github" alt="GitHub forks"></a>
+</p>
 
 ## Getting started
 
-TODO: List prerequisites and provide or point to information on how to
-start using the package.
+TODO
 
 ## Usage
 
-TODO: Include short and useful examples for package users. Add longer examples
-to `/example` folder. 
+TODO
 
-```dart
-const like = 'sample';
-```
+## Todo
 
-## Additional information
+- Complete README
+- API docs
+- CI - analyze, test, coverage
+- Mock more plugins in tests
+- Mock EventChannel of plugin
 
-TODO: Tell users more about the package: where to find more information, how to 
-contribute to the package, how to file issues, what response they can expect 
-from the package authors, and more.
+## Contribute
+
+Check the [Todo](#todo) section above, before you begin with any contribution.
+
+1. You'll need a GitHub account.
+2. Fork the [repository](https://github.com/daadu/mock_plugin).
+3. Pick an issue to work on from [issue tracker](https://github.com/daadu/mock_plugin/issues).
+4. Implement it.
+5. Add your name and email in `authors` section in `pubspec.yaml` file.
+6. Send merge request.
+7. Star this project.
+8. Become a hero!!
+
+## Features and bugs
+
+Please file feature requests and bugs at
+the [issue tracker](https://github.com/daadu/mock_plugin/issues).
+
+## Contributors ✨
+
+Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/docs/en/emoji-key)):
+
+<!-- ALL-CONTRIBUTORS-LIST:START - Do not remove or modify this section -->
+<!-- prettier-ignore-start -->
+<!-- markdownlint-disable -->
+<table>
+  <tr>
+    <td align="center"><a href="https://bhikadia.com/"><img src="https://avatars.githubusercontent.com/u/4963236?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Harsh Bhikadia</b></sub></a><br /><a href="https://github.com/daadu/mock_plugin/commits?author=daadu" title="Code">💻</a> <a href="#ideas-daadu" title="Ideas, Planning, & Feedback">🤔</a></td>
+  </tr>
+</table>
+
+<!-- markdownlint-restore -->
+<!-- prettier-ignore-end -->
+
+<!-- ALL-CONTRIBUTORS-LIST:END -->
+
+This project follows the [all-contributors](https://github.com/all-contributors/all-contributors) specification. Contributions of any kind welcome!
