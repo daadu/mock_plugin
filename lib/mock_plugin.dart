@@ -5,11 +5,10 @@ import 'package:flutter/services.dart';
 import 'package:flutter_test/flutter_test.dart';
 
 part 'src/error.dart';
-
 part 'src/verifier.dart';
 
 typedef _Result = Future<Object?>?;
-typedef _ResultCallback = _Result Function();
+typedef _ResultCallback = _Result Function(MethodCall call);
 
 @visibleForTesting
 class StubMethod {
@@ -28,11 +27,11 @@ class StubMethod {
 
   _CallCountVerifier get verify => _verifier;
 
-  void thenResult(_ResultCallback callback) => _callback = callback;
+  void toResult(_ResultCallback callback) => _callback = callback;
 
-  _Result _call() {
+  _Result _call(MethodCall call) {
     _callCount++;
-    return _callback?.call();
+    return _callback?.call(call);
   }
 }
 
@@ -52,7 +51,7 @@ class MockedPlugin {
   @override
   String toString() => "MockedPlugin(${_methodChannel.name})";
 
-  StubMethod when(dynamic method, [dynamic arguments = anything]) {
+  StubMethod stub(dynamic method, [dynamic arguments = anything]) {
     final stubMethod = StubMethod._(method, arguments);
     _stubs.add(stubMethod);
     return stubMethod;
@@ -82,7 +81,7 @@ class MockedPlugin {
         _calls.add(call);
 
         // call stub and return result
-        return stub._call();
+        return stub._call(call);
       }
     }
 

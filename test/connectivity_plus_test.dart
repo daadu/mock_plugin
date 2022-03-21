@@ -12,7 +12,7 @@ main() {
 
   group("checkConnectivity", () {
     test("error if not stub", () async {
-      connectivityPlugin.when("??");
+      connectivityPlugin.stub("??");
       await expectLater(
         () async => await Connectivity().checkConnectivity(),
         throwsNoStubMockPluginError,
@@ -20,7 +20,7 @@ main() {
     });
     test("not connected", () async {
       // arrange
-      connectivityPlugin.when("check").thenResult(() async => "none");
+      connectivityPlugin.stub("check").toResult((_) async => "none");
       // act
       final result = await Connectivity().checkConnectivity();
       // assert
@@ -29,7 +29,7 @@ main() {
     });
     test("unknown result", () async {
       // arrange
-      connectivityPlugin.when("check").thenResult(() async => "??");
+      connectivityPlugin.stub("check").toResult((_) async => "??");
       // act
       final result = await Connectivity().checkConnectivity();
       // assert
@@ -38,7 +38,7 @@ main() {
     });
     test("connected via wifi", () async {
       // arrange
-      connectivityPlugin.when("check").thenResult(() async => "wifi");
+      connectivityPlugin.stub("check").toResult((_) async => "wifi");
       // act
       final result = await Connectivity().checkConnectivity();
       // assert
@@ -47,8 +47,8 @@ main() {
     });
     test("connected via wifi [verify with stub call]", () async {
       // arrange
-      final stubCall = connectivityPlugin.when("check");
-      stubCall.thenResult(() async => "wifi");
+      final stubCall = connectivityPlugin.stub("check");
+      stubCall.toResult((_) async => "wifi");
       // act
       final result = await Connectivity().checkConnectivity();
       // assert
