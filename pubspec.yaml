@@ -1,6 +1,6 @@
 name: mock_plugin
 description: Easily mock flutter plugins for testing.
-version: 0.1.0
+version: 0.2.0
 homepage: https://github.com/daadu/mock_plugin
 
 environment:

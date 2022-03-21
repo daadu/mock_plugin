@@ -1,3 +1,10 @@
+## 0.2.0
+
+- refactor**BREAKING**: renaming public member and passing MethodCall to `_ResultCallback`
+- docs(readme): added codecov badge
+- refactor: MockedPlugin: having single _match method
+- docs(readme): removed CI todo
+
 ## 0.1.0
 
 - docs(readme): fix badge
