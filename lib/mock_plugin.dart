@@ -10,6 +10,9 @@ part 'src/verifier.dart';
 typedef _Result = Future<Object?>?;
 typedef _ResultCallback = _Result Function(MethodCall call);
 
+bool _match(dynamic actual, dynamic matcher) =>
+    matcher is Matcher ? matcher.matches(actual, {}) : actual == matcher;
+
 @visibleForTesting
 class StubMethod {
   final dynamic _method;
@@ -30,6 +33,9 @@ class StubMethod {
   void toResult(_ResultCallback callback) => _callback = callback;
 
   _Result _call(MethodCall call) {
+    assert(_match(call.method, _method));
+    assert(_match(call.arguments, _arguments));
+
     _callCount++;
     return _callback?.call(call);
   }
@@ -67,9 +73,6 @@ class MockedPlugin {
     _calls.clear();
     _stubs.clear();
   }
-
-  bool _match(dynamic actual, dynamic matcher) =>
-      matcher is Matcher ? matcher.matches(actual, {}) : actual == matcher;
 
   _Result _methodHandler(MethodCall call) async {
     // match stub to call - call if found or error
