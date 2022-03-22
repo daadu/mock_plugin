@@ -84,6 +84,7 @@ class MockedPlugin {
     assert(_shouldCapture, "Should be capturing");
     assert(_capturedStub != null, "Should capture something");
     _shouldCapture = false;
+    _stubs.add(_capturedStub!);
   }
 
   StubMethod Function(dynamic forCall) get stubFor {
