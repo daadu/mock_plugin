@@ -84,7 +84,6 @@ class MockedPlugin {
     assert(_shouldCapture, "Should be capturing");
     assert(_capturedStub != null, "Should capture something");
     _shouldCapture = false;
-    _stubs.add(_capturedStub!);
   }
 
   StubMethod Function(dynamic forCall) get stubFor {
@@ -108,9 +107,8 @@ class MockedPlugin {
   }
 
   _Result _methodHandler(MethodCall call) async {
-    print("called: $call");
     if (_shouldCapture) {
-      _capturedStub = StubMethod._(call.method, call.arguments);
+      stub(call.method, call.arguments);
       return null;
     }
 
