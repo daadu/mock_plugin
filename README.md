@@ -29,6 +29,7 @@ TODO
 - API docs
 - Mock more plugins in tests
 - Mock EventChannel of plugin
+- Mock D-Bus for plugins for Linux [https://github.com/canonical/dbus.dart/issues/336]
 
 ## Contribute
 

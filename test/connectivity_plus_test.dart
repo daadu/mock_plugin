@@ -1,3 +1,5 @@
+// TODO: connectivity_plus on Linux uses D-Bus, which is not yet mocked by mock_plugin.
+@TestOn('!linux')
 import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mock_plugin/mock_plugin.dart';
