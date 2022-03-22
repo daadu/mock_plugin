@@ -47,25 +47,24 @@ main() {
     });
     test("connected via wifi [verify with stub call]", () async {
       // arrange
-      final stubCall = connectivityPlugin.stub("check");
-      stubCall.toResult((_) async => "wifi");
+      final checkStub = connectivityPlugin.stub("check");
+      checkStub.toResult((_) async => "wifi");
       // act
       final result = await Connectivity().checkConnectivity();
       // assert
       expect(result, ConnectivityResult.wifi);
-      stubCall.verify.calledOnce();
+      checkStub.verify.calledOnce();
       connectivityPlugin.verify("check").calledOnce();
     });
     test("dynamic stubbing", () async {
       // arrange
-      final stubCall =
-          connectivityPlugin.stubFor(await Connectivity().checkConnectivity());
-      stubCall.toResult((call) async => "mobile");
+      final checkStub = connectivityPlugin.stubFor.call(await Connectivity().checkConnectivity());
+      checkStub.toResult((call) async => "mobile");
       // act
       final result = await Connectivity().checkConnectivity();
       // assert
       expect(result, ConnectivityResult.mobile);
-      stubCall.verify.calledOnce();
+      checkStub.verify.calledOnce();
     });
   });
 }

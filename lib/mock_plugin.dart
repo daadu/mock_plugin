@@ -108,7 +108,7 @@ class MockedPlugin {
 
   _Result _methodHandler(MethodCall call) async {
     if (_shouldCapture) {
-      stub(call.method, call.arguments);
+      _capturedStub = stub(call.method, call.arguments);
       return null;
     }
 
