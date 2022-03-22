@@ -1,7 +1,5 @@
 library mock_plugin;
 
-import 'dart:async';
-
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_test/flutter_test.dart';
@@ -89,7 +87,6 @@ class MockedPlugin {
   StubMethod Function(dynamic forCall) get stubFor {
     _startCapturing();
     return (forCall) {
-      print("forCall: $forCall");
       _stopCapturing();
       return _capturedStub!;
     };

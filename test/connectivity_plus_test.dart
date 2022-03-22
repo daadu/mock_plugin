@@ -58,7 +58,8 @@ main() {
     });
     test("dynamic stubbing", () async {
       // arrange
-      final checkStub = connectivityPlugin.stubFor.call(await Connectivity().checkConnectivity());
+      final checkStub = connectivityPlugin.stubFor
+          .call(await Connectivity().checkConnectivity());
       checkStub.toResult((call) async => "mobile");
       // act
       final result = await Connectivity().checkConnectivity();
