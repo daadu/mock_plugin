@@ -28,6 +28,7 @@ TODO
 - Complete README
 - API docs
 - Mock more plugins in tests
+- Stub without hard-coding method name, etc
 - Mock EventChannel of plugin
 - Mock D-Bus for plugins for Linux [https://github.com/canonical/dbus.dart/issues/336]
 
