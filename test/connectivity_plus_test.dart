@@ -56,5 +56,16 @@ main() {
       stubCall.verify.calledOnce();
       connectivityPlugin.verify("check").calledOnce();
     });
+    test("dynamic stubbing", () async {
+      // arrange
+      final stubCall =
+          connectivityPlugin.stubFor(await Connectivity().checkConnectivity());
+      stubCall.toResult((call) async => "mobile");
+      // act
+      final result = await Connectivity().checkConnectivity();
+      // assert
+      expect(result, ConnectivityResult.mobile);
+      stubCall.verify.calledOnce();
+    });
   });
 }

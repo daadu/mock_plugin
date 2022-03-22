@@ -1,5 +1,7 @@
 library mock_plugin;
 
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_test/flutter_test.dart';
@@ -41,6 +43,12 @@ class StubMethod {
   }
 }
 
+class StubFor {
+  Future<Object?>? Function() forCall;
+
+  StubFor(this.forCall);
+}
+
 @visibleForTesting
 class MockedPlugin {
   final MethodChannel _methodChannel;
@@ -63,6 +71,30 @@ class MockedPlugin {
     return stubMethod;
   }
 
+  bool _shouldCapture = false;
+  StubMethod? _capturedStub;
+
+  void _startCapturing() {
+    assert(_shouldCapture == false, "Not already capturing");
+    _shouldCapture = true;
+    _capturedStub = null;
+  }
+
+  void _stopCapturing() {
+    assert(_shouldCapture, "Should be capturing");
+    assert(_capturedStub != null, "Should capture something");
+    _shouldCapture = false;
+  }
+
+  StubMethod Function(dynamic forCall) get stubFor {
+    _startCapturing();
+    return (forCall) {
+      print("forCall: $forCall");
+      _stopCapturing();
+      return _capturedStub!;
+    };
+  }
+
   _CallCountVerifier verify(dynamic method, [dynamic arguments = anything]) =>
       _CallCountVerifier._(() => _calls
           .where((call) =>
@@ -75,6 +107,12 @@ class MockedPlugin {
   }
 
   _Result _methodHandler(MethodCall call) async {
+    print("called: $call");
+    if (_shouldCapture) {
+      _capturedStub = StubMethod._(call.method, call.arguments);
+      return null;
+    }
+
     // match stub to call - call if found or error
     for (final stub in _stubs) {
       // check if method and arg matches
